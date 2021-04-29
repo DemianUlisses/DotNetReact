@@ -49,7 +49,7 @@ export class FetchProduto extends Component {
 
                             <td>
                                 <button className="btn btn-success" onClick={(id) => this.handleEdit(prod.id)}>Edit</button> &nbsp;
-                                  <button className="btn btn-danger" onClick={(id) => this.handleDelete(prod.id)}>Delete</button>
+                                <button className="btn btn-danger" onClick={(id) => this.handleDelete(prod.id)}>Delete</button>
                             </td>
 
                         </tr>

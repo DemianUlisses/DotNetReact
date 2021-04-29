@@ -39,13 +39,14 @@ export class FetchUsuario extends Component {
                         <th>Nome</th>
                         <th>Email</th>
                         <th>Sexo</th>
+                        <th>Ações</th>
                     </tr>
                 </thead>
                 <tbody>
                     {usuarios.map(prod =>
                         <tr key={prod.id}>
                             <td>{prod.id}</td>
-                            <td>{prod.nome}</td>
+                            <td>{prod.descricao}</td>
                             <td>{prod.email}</td>
                             <td>{prod.sexo}</td>
                             <td>

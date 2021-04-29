@@ -12,47 +12,47 @@ namespace WebValdirReact.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UsuariosController : ControllerBase
+    public class ProdutosController : ControllerBase
     {
         private readonly Contexto _context;
 
-        public UsuariosController(Contexto context)
+        public ProdutosController(Contexto context)
         {
             _context = context;
         }
 
-        // GET: api/Usuarios
+        // GET: api/Produtos
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Usuario>>> GetUsuario()
+        public async Task<ActionResult<IEnumerable<Produto>>> GetProduto()
         {
-            return await _context.Usuario.ToListAsync();
+            return await _context.Produto.ToListAsync();
         }
 
-        // GET: api/Usuarios/5
+        // GET: api/Produtos/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Usuario>> GetUsuario(int id)
+        public async Task<ActionResult<Produto>> GetProduto(int id)
         {
-            var usuario = await _context.Usuario.FindAsync(id);
+            var produto = await _context.Produto.FindAsync(id);
 
-            if (usuario == null)
+            if (produto == null)
             {
                 return NotFound();
             }
 
-            return usuario;
+            return produto;
         }
 
-        // PUT: api/Usuarios/5
+        // PUT: api/Produtos/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutUsuario(int id, [FromForm]Usuario usuario)
+        public async Task<IActionResult> PutProduto(int id, Produto produto)
         {
-            if (id != usuario.Id)
+            if (id != produto.Id)
             {
                 return BadRequest();
             }
 
-            _context.Entry(usuario).State = EntityState.Modified;
+            _context.Entry(produto).State = EntityState.Modified;
 
             try
             {
@@ -60,7 +60,7 @@ namespace WebValdirReact.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!UsuarioExists(id))
+                if (!ProdutoExists(id))
                 {
                     return NotFound();
                 }
@@ -73,36 +73,36 @@ namespace WebValdirReact.Controllers
             return NoContent();
         }
 
-        // POST: api/Usuarios
+        // POST: api/Produtos
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Usuario>> PostUsuario([FromForm]Usuario usuario)
+        public async Task<ActionResult<Produto>> PostProduto(Produto produto)
         {
-            _context.Usuario.Add(usuario);
+            _context.Produto.Add(produto);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetUsuario", new { id = usuario.Id }, usuario);
+            return CreatedAtAction("GetProduto", new { id = produto.Id }, produto);
         }
 
-        // DELETE: api/Usuarios/5
+        // DELETE: api/Produtos/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteUsuario(int id)
+        public async Task<IActionResult> DeleteProduto(int id)
         {
-            var usuario = await _context.Usuario.FindAsync(id);
-            if (usuario == null)
+            var produto = await _context.Produto.FindAsync(id);
+            if (produto == null)
             {
                 return NotFound();
             }
 
-            _context.Usuario.Remove(usuario);
+            _context.Produto.Remove(produto);
             await _context.SaveChangesAsync();
 
             return NoContent();
         }
 
-        private bool UsuarioExists(int id)
+        private bool ProdutoExists(int id)
         {
-            return _context.Usuario.Any(e => e.Id == id);
+            return _context.Produto.Any(e => e.Id == id);
         }
     }
 }
