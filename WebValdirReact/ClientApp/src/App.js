@@ -8,6 +8,9 @@ import { FetchProduto } from './components/FetchProduto';
 import { AddProduto } from './components/AddProduto';
 import { FetchUsuario } from './components/FetchUsuario';
 import { AddUsuario } from './components/AddUsuario';
+import { FetchTipoUsuario } from './components/FetchTipoUsuario';
+import { AddTipoUsuario } from './components/AddTipoUsuario';
+
 import './custom.css'
 
 export default class App extends Component {
@@ -25,6 +28,9 @@ export default class App extends Component {
                 <Route path='/fetch-usuario' component={FetchUsuario} />
                 <Route path='/add-usuario' component={AddUsuario} />
                 <Route path='/usuario/edit/:id' component={AddUsuario} />
+                <Route path='/fetch-tipoUsuario' component={FetchTipoUsuario} />
+                <Route path='/add-tipousuario' component={AddTipoUsuario} />
+                <Route path='/tipoUsuario/edit/:id' component={AddTipoUsuario} />
             </Layout>
         );
     }

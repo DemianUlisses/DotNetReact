@@ -1,16 +1,16 @@
 ﻿import React, { Component } from 'react';
 
-export class Produto {
+export class TipoUsuario {
     constructor() {
         this.id = 0;
         this.descricao = "";
     }
 }
 
-export class AddProduto extends Component {
+export class AddTipoUsuario extends Component {
     constructor(props) {
         super(props);
-        this.state = { title: "", produto: new Produto(), loading: true };
+        this.state = { title: "", tipousuario: new TipoUsuario(), loading: true };
         this.intialize();
 
         this.handleSalve = this.handleSalve.bind(this);
@@ -21,13 +21,13 @@ export class AddProduto extends Component {
 
         var id = this.props.match.params["id"];
         if (id > 0) {
-            const response = await fetch('api/Produtos/' + id);
+            const response = await fetch('api/TipoUsuarios/' + id);
             const data = await response.json();
-            this.setState({ title: "Edit", produto: data, loading: false });
+            this.setState({ title: "Edit", tipousuario: data, loading: false });
         }
         else {
 
-            this.state = { title: "Create", produto: new Produto(), loading: false };
+            this.state = { title: "Create", tipousuario: new TipoUsuario(), loading: false };
         }
     }
 
@@ -39,7 +39,7 @@ export class AddProduto extends Component {
         return (
             <div>
                 <h1>{this.state.title}</h1>
-                <h3>Produto</h3>
+                <h3>Tipo</h3>
                 {contents}
             </div>
         );
@@ -52,35 +52,35 @@ export class AddProduto extends Component {
 
         const data = new FormData(event.target);
 
-        if (this.state.produto.id) {
-            const response1 = fetch('api/Produtos/' + this.state.produto.id, { method: 'PUT', body: data });
-            this.props.history.push('/fetch-produto');
+        if (this.state.tipousuario.id) {
+            const response1 = fetch('api/TipoUsuarios/' + this.state.tipousuario.id, { method: 'PUT', body: data });
+            this.props.history.push('/fetch-tipousuario');
         }
         else {
-            const response2 = fetch('api/Produtos/', { method: 'POST', body: data });
-            this.props.history.push('/fetch-produto');
+            const response2 = fetch('api/TipoUsuarios/', { method: 'POST', body: data });
+            this.props.history.push('/fetch-tipousuario');
         }
     }
 
     handleCancel(event) {
         event.preventDefault();
-        this.props.history.push('/fetch-produto');
+        this.props.history.push('/fetch-tipousuario');
     }
 
     renderCreateForm() {
         return (
             <form onSubmit={this.handleSalve}>
                 <div className="form-group row">
-                    <input type="hidden" name="id" value={this.state.produto.id} />
+                    <input type="hidden" name="id" value={this.state.tipousuario.id} />
                 </div>
                 <div className="form-group row">
                     <div className="col-md-6">
-                        <input className="form-control" type="text" name="descricao" defaultValue={this.state.produto.descricao} required />
+                        <input className="form-control" type="text" name="descricao" defaultValue={this.state.tipousuario.descricao} required />
                     </div>
                 </div>
 
                 <div className="form-group">
-                    <button type="submit" className="btn btn-success" value={this.state.produto.id}>Salvar</button>
+                    <button type="submit" className="btn btn-success" value={this.state.tipousuario.id}>Salvar</button>
                     <button className="btn btn-danger" onClick={this.handleCancel}>Cencelar</button>
                 </div>
             </form>
