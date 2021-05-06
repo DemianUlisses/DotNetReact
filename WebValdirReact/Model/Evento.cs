@@ -7,20 +7,22 @@ using System.Threading.Tasks;
 
 namespace WebValdirReact.Model
 {
-    [Table("Produto")]
-    public class Produto
+    [Table("Evento")]
+    public class Evento
     {
         [Column("Id")]
         public int Id { get; set; }
 
         [Column("Descricao")]
         public string Descricao { get; set; }
-      
-        [Column("QtdePar")]
-        public int QtdePar { get; set; }
 
-        [Column("Situacao")]
-        public int Situacao { get; set; }
+        [Column("nome")]
+        [DataType(DataType.Date)]
+        public DateTime nome { get; set; }
+
+        [Column("QtdQua")]
+        public int quantidade { get; set; }
+
 
     }
 }

@@ -1,17 +1,17 @@
 ﻿import React, { Component } from 'react';
 
-export class Produto {
+export class Evento {
     constructor() {
-        this.id         =  0;
+        this.id = 0;
         this.descricao = "";
-        this.qtdepar    = 0 ;
-    }
+        this.quantidade = 0;
+           }
 }
 
-export class AddProduto extends Component {
+export class AddEvento extends Component {
     constructor(props) {
         super(props);
-        this.state = { title: "", produto: new Produto(), loading: true };
+        this.state = { title: "", evento: new Evento(), loading: true };
         this.intialize();
 
         this.handleSalve = this.handleSalve.bind(this);
@@ -22,13 +22,13 @@ export class AddProduto extends Component {
 
         var id = this.props.match.params["id"];
         if (id > 0) {
-            const response = await fetch('api/Produtos/' + id);
+            const response = await fetch('api/Eventos/' + id);
             const data = await response.json();
-            this.setState({ title: "Edit", produto: data, loading: false });
+            this.setState({ title: "Edit", evento: data, loading: false });
         }
         else {
 
-            this.state = { title: "Create", produto: new Produto(), loading: false };
+            this.state = { title: "Create", evento: new Evento(), loading: false };
         }
     }
 
@@ -52,43 +52,49 @@ export class AddProduto extends Component {
 
         const data = new FormData(event.target);
 
-        if (this.state.produto.id) {
-            const response1 = fetch('api/Produtos/' + this.state.produto.id, { method: 'PUT', body: data });
-            this.props.history.push('/fetch-produto');
+        if (this.state.evento.id) {
+            const response1 = fetch('api/Eventos/' + this.state.evento.id, { method: 'PUT', body: data });
+            this.props.history.push('/fetch-evento');
         }
         else {
-            const response2 = fetch('api/Produtos/', { method: 'POST', body: data });
-            this.props.history.push('/fetch-produto');
+            const response2 = fetch('api/Eventos/', { method: 'POST', body: data });
+            this.props.history.push('/fetch-evento');
         }
     }
 
     handleCancel(event) {
         event.preventDefault();
-        this.props.history.push('/fetch-produto');
+        this.props.history.push('/fetch-evento');
     }
 
     renderCreateForm() {
         return (
             <form onSubmit={this.handleSalve}>
                 <div className="form-group row">
-                    <input type="hidden" name="id" value={this.state.produto.id} />
+                    <input type="hidden" name="id" value={this.state.evento.id} />
                 </div>
                 <div className="form-group row">
                     <div className="col-md-6">
                         <p>Evento</p>
-                        <input className="form-control" type="text" name="descricao" defaultValue={this.state.produto.descricao} required />
+                        <input className="form-control" type="text" name="descricao" defaultValue={this.state.evento.descricao} required />
+                    </div>
+                </div>
+                <div className="form-group row">
+                    <div className="col-md-6">
+                        <p>Data Evento</p>
+                        <input className="form-control" type="datetime-local" name="nome" defaultValue={this.state.evento.nome} required />
                     </div>
                 </div>
 
                 <div className="form-group row">
                     <div className="col-md-6">
-                        <p>Qtde Participantes</p>
-                        <input className="form-control" type="text" name="qtdepar" defaultValue={this.state.produto.qtdepar} required />
+                        <p>Quantidade</p>
+                        <input className="form-control" type="text" name="quantidade" defaultValue={this.state.evento.quantidade} required />
                     </div>
                 </div>
-
+                
                 <div className="form-group">
-                    <button type="submit" className="btn btn-success" value={this.state.produto.id}>Salvar</button>
+                    <button type="submit" className="btn btn-success" value={this.state.evento.id}>Salvar</button>
                     <button className="btn btn-danger" onClick={this.handleCancel}>Cencelar</button>
                 </div>
             </form>
@@ -97,3 +103,5 @@ export class AddProduto extends Component {
     }
 
 }
+
+

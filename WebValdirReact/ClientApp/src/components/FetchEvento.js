@@ -1,54 +1,54 @@
 ﻿import React, { Component } from "react"
 import { Link } from 'react-router-dom'
 
-export class FetchProduto extends Component {
-    static displayName = "Eventos";
+export class FetchEvento extends Component {
+    static displayName = "Evento";
 
     constructor() {
         super();
-        this.state = { produtos: [], loading: true }
+        this.state = { eventos: [], loading: true }
     }
 
     componentDidMount() {
-        this.populaProdutoData();
+        this.populaEventoData();
     }
 
     static handleEdit(id) {
-        window.location.href = "/produto/edit/" + id;
+        window.location.href = "/evento/edit/" + id;
     }
 
     static handleDelete(id) {
-        if (!window.confirm("Você deseja deletar o produto : " + id)) {
+        if (!window.confirm("Você deseja deletar o evento : " + id)) {
             return;
         }
         else {
-            fetch('api/produtos/' + id, { method: 'delete' })
+            fetch('api/eventos/' + id, { method: 'delete' })
                 .then(json => {
-                    window.location.href = "fetch-produto";
+                    window.location.href = "fetch-evento";
                     alert('Deletado com Sucesso!');
                 })
         }
     }
 
-    static renderProdutosTabela(produtos) {
-
+    static renderEventosTabela(eventos) {
         return (
             <table className='table table-striped' aria-labelledby="tabelLabel" >
                 <thead>
                     <tr>
                         <th>Código</th>
-                        <th>Descrição</th>
-                        <th>Qtde</th>
+                        <th>Nome</th>
+                        <th>Data</th>
+                        <th>Presente</th>
                         <th>Ações</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {produtos.map(prod =>
+                    {eventos.map(prod =>
                         <tr key={prod.id}>
                             <td>{prod.id}</td>
                             <td>{prod.descricao}</td>
-                            <td>{prod.qtdepar}</td>
-                      
+                            <td>{prod.nome}</td>
+                            <td>{prod.quantidade}</td>
                             <td>
                                 <button className="btn btn-success" onClick={(id) => this.handleEdit(prod.id)}>Edit</button> &nbsp;
                                 <button className="btn btn-danger" onClick={(id) => this.handleDelete(prod.id)}>Delete</button>
@@ -64,25 +64,24 @@ export class FetchProduto extends Component {
     render() {
         let contents = this.state.loading
             ? <p><em> Carregando... </em> </p>
-            : FetchProduto.renderProdutosTabela(this.state.produtos);
+            : FetchEvento.renderEventosTabela(this.state.eventos);
 
         return (
             <div>
-                <h1 id="tabelLabel" >Produtos</h1>
-                <p>Tela de Listagem de Produtos</p>
+                <h1 id="tabelLabel" >Eventos</h1>
+                <p>Tela de Listagem de Eventos</p>
                 <p>
-                    <Link to="/add-produto">Cadastrar Produto</Link>
+                <Link to="/add-evento">Cadastrar Evento</Link>
                 </p>
                 {contents}
             </div>
         );
     }
 
-
-    async populaProdutoData() {
-        const response = await fetch('api/Produtos');
+    async populaEventoData() {
+        const response = await fetch('api/Eventos');
         const data = await response.json();
-        this.setState({ produtos: data, loading: false });
+        this.setState({ eventos: data, loading: false });
     }
 
 }

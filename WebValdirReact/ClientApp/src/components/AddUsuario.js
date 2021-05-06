@@ -6,6 +6,7 @@ export class Usuario {
         this.descricao = "";
         this.email = "";
         this.sexo = "";
+        this.TipoUsuarioID = 0;
     }
 }
 
@@ -78,6 +79,7 @@ export class AddUsuario extends Component {
                     <div className="col-md-6">
                         <p>Nome</p>
                         <input className="form-control" type="text" name="descricao" defaultValue={this.state.usuario.descricao} required />
+                        <span asp-validation-for={this.state.usuario.descricao} class="text-danger"></span>
                     </div>
                 </div>
                 <div className="form-group row">
@@ -92,6 +94,11 @@ export class AddUsuario extends Component {
                         <input className="form-control" type="text" name="sexo" defaultValue={this.state.usuario.sexo} required />
                     </div>
                 </div>
+                <div class="form-group">
+                    <p>Tipo</p>
+                    <input className="form-control" type="text" name="TipoUsuarioID" defaultValue={this.state.usuario.TipoUsuarioID} required />
+                </div>
+
                 <div className="form-group">
                     <button type="submit" className="btn btn-success" value={this.state.usuario.id}>Salvar</button>
                     <button className="btn btn-danger" onClick={this.handleCancel}>Cencelar</button>

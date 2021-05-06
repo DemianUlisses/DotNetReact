@@ -19,7 +19,9 @@ namespace WebValdirReact.Configuracao
         public DbSet<WebValdirReact.Model.Usuario> Usuario { get; set; }
 
         public DbSet<WebValdirReact.Model.TipoUsuario> TipoUsuario { get; set; }
-        
 
+        public DbSet<WebValdirReact.Model.Evento> Evento { get; set; }
+
+        
     }
 }

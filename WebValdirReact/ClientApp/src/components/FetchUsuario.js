@@ -39,6 +39,7 @@ export class FetchUsuario extends Component {
                         <th>Nome</th>
                         <th>Email</th>
                         <th>Sexo</th>
+                        <th>Tipo</th>
                         <th>Ações</th>
                     </tr>
                 </thead>
@@ -49,9 +50,10 @@ export class FetchUsuario extends Component {
                             <td>{prod.descricao}</td>
                             <td>{prod.email}</td>
                             <td>{prod.sexo}</td>
+                            <td>{prod.TipoUsuario}</td>
                             <td>
                                 <button className="btn btn-success" onClick={(id) => this.handleEdit(prod.id)}>Edit</button> &nbsp;
-                                  <button className="btn btn-danger" onClick={(id) => this.handleDelete(prod.id)}>Delete</button>
+                                <button className="btn btn-danger" onClick={(id) => this.handleDelete(prod.id)}>Delete</button>
                             </td>
 
                         </tr>

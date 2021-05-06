@@ -17,5 +17,7 @@ namespace WebValdirReact.Model
         [StringLength(60, MinimumLength = 3, ErrorMessage = "O título deve ter entre 3 e 60 caracteres!")]
         [Required(ErrorMessage = "Obrigatório informar o título!")]
         public string Descricao { get; set; }
+
+      //  public ICollection<Usuario> Usuarios { get; set; }
     }
 }

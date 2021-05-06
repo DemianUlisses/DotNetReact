@@ -47,11 +47,9 @@ export class FetchTipoUsuario extends Component {
                             <td>{prod.descricao}</td>
                             <td>
                                 <button className="btn btn-success" onClick={(id) => this.handleEdit(prod.id)}>Edit</button> &nbsp;
-                                  <button className="btn btn-danger" onClick={(id) => this.handleDelete(prod.id)}>Delete</button>
+                                <button className="btn btn-danger" onClick={(id) => this.handleDelete(prod.id)}>Delete</button>
                             </td>
-
                         </tr>
-
                     )}
                 </tbody>
             </table>
@@ -66,10 +64,10 @@ export class FetchTipoUsuario extends Component {
 
         return (
             <div>
-                <h1 id="tabelLabel" >Usuarios</h1>
-                <p>Tela de Listagem de Usuarioss</p>
+                <h1 id="tabelLabel" >Tipo Usuários</h1>
+                <p>Tela de Listagem de Usuários</p>
                 <p>
-                    <Link to="/add-tipousuario">Cadastrar Usuario</Link>
+                    <Link to="/add-tipousuario">Cadastrar Tipo de Usuários</Link>
                 </p>
                 {contents}
             </div>
