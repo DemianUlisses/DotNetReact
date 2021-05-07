@@ -46,7 +46,6 @@ export class AddEvento extends Component {
         );
     }
 
-
     handleSalve(event) {
         event.preventDefault();
 
@@ -82,26 +81,23 @@ export class AddEvento extends Component {
                 <div className="form-group row">
                     <div className="col-md-6">
                         <p>Data Evento</p>
-                        <input className="form-control" type="datetime-local" name="nome" defaultValue={this.state.evento.nome} required />
+                        <input className="form-control" id="meeting-time" type="datetime-local" name="nome" defaultValue={this.state.evento.nome} required />
                     </div>
                 </div>
-
                 <div className="form-group row">
                     <div className="col-md-6">
                         <p>Quantidade</p>
                         <input className="form-control" type="text" name="quantidade" defaultValue={this.state.evento.quantidade} required />
                     </div>
                 </div>
-                
+
                 <div className="form-group">
                     <button type="submit" className="btn btn-success" value={this.state.evento.id}>Salvar</button>
-                    <button className="btn btn-danger" onClick={this.handleCancel}>Cencelar</button>
+                     <button className="btn btn-danger" onClick={this.handleCancel}>Cencelar</button>
                 </div>
             </form>
-
         );
     }
-
 }
 
 

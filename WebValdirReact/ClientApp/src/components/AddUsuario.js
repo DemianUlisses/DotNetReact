@@ -85,7 +85,7 @@ export class AddUsuario extends Component {
                 <div className="form-group row">
                     <div className="col-md-6">
                         <p>Email</p>
-                        <input className="form-control" type="text" name="email" defaultValue={this.state.usuario.email} required />
+                        <input className="form-control" type="email" id="email" size="30" name="email" defaultValue={this.state.usuario.email} required />
                     </div>
                 </div>
                 <div className="form-group row">
