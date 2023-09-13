@@ -39,6 +39,7 @@ export class FetchEvento extends Component {
                         <th>Nome</th>
                         <th>Data</th>
                         <th>Presente</th>
+                        <th>Situaçao</th>
                         <th>Ações</th>
                     </tr>
                 </thead>
@@ -49,6 +50,7 @@ export class FetchEvento extends Component {
                             <td>{prod.descricao}</td>
                             <td>{prod.nome}</td>
                             <td>{prod.quantidade}</td>
+                            <td>{prod.situacao}</td>
                             <td>
                                 <button className="btn btn-success" onClick={(id) => this.handleEdit(prod.id)}>Edit</button> &nbsp;
                                 <button className="btn btn-danger" onClick={(id) => this.handleDelete(prod.id)}>Delete</button>

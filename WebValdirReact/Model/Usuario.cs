@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace WebValdirReact.Model
 {
@@ -33,6 +30,5 @@ namespace WebValdirReact.Model
 
         [Range(1, 100, ErrorMessage = "Obrigado Informar o Tipo Usuario")]
         public TipoUsuario TipoUsuario { get; set; }
-
     }
 }

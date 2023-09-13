@@ -5,7 +5,9 @@ export class Evento {
         this.id = 0;
         this.descricao = "";
         this.quantidade = 0;
-           }
+        this.observacao = "";
+        this.situacaoP = 0;
+    }
 }
 
 export class AddEvento extends Component {
@@ -88,6 +90,20 @@ export class AddEvento extends Component {
                     <div className="col-md-6">
                         <p>Quantidade</p>
                         <input className="form-control" type="text" name="quantidade" defaultValue={this.state.evento.quantidade} required />
+                    </div>
+                </div>
+
+                <div className="form-group row">
+                    <div className="col-md-6">
+                        <p>Quantidade</p>
+                        <input className="form-control" type="text" name="situacaoP" defaultValue={this.state.evento.situacaoP} required />
+                    </div>
+                </div>
+
+                <div className="form-group row">
+                    <div className="col-md-6">
+                        <p>Quantidade</p>
+                        <textarea className="form-control" name="observacao" defaultValue={this.state.evento.observacao} required />
                     </div>
                 </div>
 

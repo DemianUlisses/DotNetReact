@@ -23,6 +23,13 @@ namespace WebValdirReact.Model
         [Column("QtdQua")]
         public int quantidade { get; set; }
 
+        [Column("situacao")]
+        public string situacao { get; set; }
+        [Column("observacao")]
+        public string observacao { get; set; }
+
+        [Column("situacaoP")]
+        public int situacaoP { get; set; }
 
     }
 }

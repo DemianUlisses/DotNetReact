@@ -49,10 +49,19 @@ namespace WebValdirReact.Controllers
         {
             if (id != evento.Id)
             {
-                return BadRequest();
+               return BadRequest();
             }
 
             _context.Entry(evento).State = EntityState.Modified;
+
+            if (evento.situacaoP == 1)
+            {
+                evento.situacao = "ATIVO";
+            }
+            else
+            {
+                evento.situacao = "INATIVO";
+            };
 
             try
             {
@@ -80,6 +89,15 @@ namespace WebValdirReact.Controllers
         {
             _context.Evento.Add(evento);
             await _context.SaveChangesAsync();
+
+            if (evento.situacaoP == 1)
+            {
+                evento.situacao = "ATIVO";
+            }
+            else
+            {
+                evento.situacao = "INATIVO";
+            };
 
             return CreatedAtAction("GetEvento", new { id = evento.Id }, evento);
         }

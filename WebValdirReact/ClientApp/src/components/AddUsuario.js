@@ -92,11 +92,13 @@ export class AddUsuario extends Component {
                     <div className="col-md-6">
                         <p>Sexo</p>
                         <input className="form-control" type="text" name="sexo" defaultValue={this.state.usuario.sexo} required />
+
+
                     </div>
                 </div>
                 <div class="form-group">
                     <p>Tipo</p>
-                    <input className="form-control" type="text" name="TipoUsuarioID" defaultValue={this.state.usuario.TipoUsuarioID} required />
+                    <input  type="int" name="TipoUsuarioID" defaultValue={this.state.usuario.TipoUsuarioID} required />
                 </div>
 
                 <div className="form-group">

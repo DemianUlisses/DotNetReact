@@ -26,7 +26,7 @@ export class FetchTipoUsuario extends Component {
                 .then(json => {
                     window.location.href = "fetch-tipousuario";
                     alert('Deletado com Sucesso!');
-                })
+            }   )
         }
     }
 

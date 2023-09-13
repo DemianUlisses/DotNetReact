@@ -4,7 +4,8 @@ export class Produto {
     constructor() {
         this.id         =  0;
         this.descricao = "";
-        this.qtdepar    = 0 ;
+        this.qtdepar = 0;
+        
     }
 }
 
@@ -87,6 +88,7 @@ export class AddProduto extends Component {
                     </div>
                 </div>
 
+                
                 <div className="form-group">
                     <button type="submit" className="btn btn-success" value={this.state.produto.id}>Salvar</button>
                     <button className="btn btn-danger" onClick={this.handleCancel}>Cencelar</button>
